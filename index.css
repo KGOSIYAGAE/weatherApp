@@ -1,0 +1,168 @@
+/*--background: #1e1e1e;
+#333333
+
+#cccccc
+*/
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aliceblue;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.left-box {
+  flex: 1;
+  justify-content: center;
+}
+
+.text-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20px;
+}
+.app-name {
+  font-size: 4em;
+  color: rgb(30, 110, 190);
+}
+
+/*Right side*/
+.right-box {
+  flex: 2;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin-left: 100px;
+}
+
+.iphone-frame {
+  width: 340px;
+  height: 650px;
+  z-index: 1;
+}
+.app {
+  background-color: white;
+  /*background-color: #000;*/
+  width: 293px;
+  height: 597px;
+  border-radius: 40px;
+  margin: 25px;
+  position: absolute;
+  /*box-shadow: 1px 2px 4px 0px rgba(20, 20, 20, 0.4);*/
+  border: 1px #cccc solid;
+  z-index: 2;
+}
+
+.app-box {
+  margin: 50px 0px 0px 12px;
+  width: 270px;
+  height: 520px;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+}
+
+input {
+  width: 150px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1px #1e1e1e solid;
+  outline: none;
+  border: none;
+}
+
+input::placeholder {
+  color: #505050;
+}
+
+.btnSearch {
+  color: #505050;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.weather-icon {
+  width: 150px;
+  height: 150px;
+}
+
+.weather-description,
+.city-name {
+  font-size: 1.2em;
+  font-style: bold;
+  color: #1e1e1e;
+}
+
+.current-time {
+  padding: 15px 0px 20px 0px;
+  color: #505050;
+  font-size: 0.9em;
+}
+
+.temp-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+}
+.current-temp {
+  font-size: 4em;
+  color: #1e1e1e;
+}
+
+.w-degree {
+  font-size: 3em;
+  margin: 5px;
+}
+
+.w-details {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.w-more-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.details-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.d-text,
+.h-text,
+.w-text,
+.v-text {
+  font-size: 0.9em;
+  font-style: bold;
+  color: #505050;
+}
