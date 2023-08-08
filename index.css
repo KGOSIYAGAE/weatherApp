@@ -166,3 +166,13 @@ input::placeholder {
   font-style: bold;
   color: #505050;
 }
+
+#loading {
+  margin-top: 200px;
+  visibility: hidden;
+}
+
+#loading.display {
+  margin-top: 200px;
+  visibility: visible;
+}

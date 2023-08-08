@@ -3,6 +3,8 @@ const APPController = (() => {
     if (cityName.length === 0) {
       alert("Please type the in city name");
     } else {
+      _showLoader();
+
       const APIKey = "b0be1ea726e41211c99a0669d5723128";
       const geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
@@ -101,6 +103,7 @@ const APPController = (() => {
   //Set UI with data
   function _setUserInterface(cleanWeatherData) {
     let allWeatherDeatils = document.getElementById("allWeatherDeatils");
+    _hideLoader();
 
     let AppUI = `<img src="./src/svg/weatherIcons/${cleanWeatherData.imageUrl}.svg" class="weather-icon"/>
     <span class="city-name">${cleanWeatherData.name}, ${cleanWeatherData.country}</span>
@@ -133,5 +136,21 @@ const APPController = (() => {
 </div>`;
 
     allWeatherDeatils.innerHTML = AppUI;
+  }
+
+  //Loader
+
+  const loader = document.getElementById("loading");
+
+  async function _showLoader() {
+    loader.style.visibility = "visible";
+
+    setTimeout(() => {
+      loader.style.visibility = "hidden";
+    }, 5000);
+  }
+
+  function _hideLoader() {
+    loader.style.visibility = "hidden";
   }
 })();
