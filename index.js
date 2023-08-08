@@ -1,12 +1,27 @@
 const APPController = (() => {
   async function _getGeolocation(cityName) {
-    const APIKey = "b0be1ea726e41211c99a0669d5723128";
-    const geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
+    if (cityName.length === 0) {
+      alert("Please type the in city name");
+    } else {
+      const APIKey = "b0be1ea726e41211c99a0669d5723128";
+      const geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
-    const geoResponse = await fetch(geoURL);
-    const geoData = await geoResponse.json();
+      const geoResponse = await fetch(geoURL);
 
-    _getWeatherDetails(geoData, APIKey);
+      if (geoResponse.status === 200) {
+        const geoData = await geoResponse.json();
+
+        if (geoData.length === 0) {
+          alert(
+            `Please type the correct city name, or the city is unavailable`
+          );
+        } else {
+          _getWeatherDetails(geoData, APIKey);
+        }
+      } else {
+        alert(`Server Error: ${geoResponse.status}, ${geoResponse.statusText}`);
+      }
+    }
   }
 
   async function _getWeatherDetails(geoData, APIKey) {
@@ -16,6 +31,7 @@ const APPController = (() => {
     const weatherResponse = await fetch(weatherURL);
     const weatherData = await weatherResponse.json();
 
+    console.log(weatherData);
     _computeData(weatherData);
   }
 
@@ -55,10 +71,9 @@ const APPController = (() => {
     //convert visibility Meters to KM
     if (visbilityDistance >= 1000) {
       visbilityDistance = visbilityDistance / 1000;
-      console.log(visbilityDistance);
-      visibility = `${10} Km`;
+      visibility = `${visbilityDistance} Km`;
     } else {
-      visibility = `${15} M`;
+      visibility = `${visbilityDistance} M`;
     }
 
     //Round of temp
