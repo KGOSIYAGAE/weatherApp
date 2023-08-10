@@ -144,13 +144,24 @@ const APPController = (() => {
 
   function _showLoader() {
     loader.style.visibility = "visible";
-
-    /*setTimeout(() => {
-      loader.style.visibility = "hidden";
-    }, 5000);*/
   }
 
   function _hideLoader() {
     loader.style.visibility = "hidden";
   }
+
+  window.onload = function _discoverRandonPic() {
+    const pictures = [
+      "weather-news.webp",
+      "weather-hot.webp",
+      "weather-rain.webp",
+      "weather-snow.webp",
+      "weather-wind.webp",
+    ];
+
+    const getPic = pictures[Math.floor(Math.random() * pictures.length)];
+    console.log(getPic);
+
+    document.getElementById("picFrame").src = `./src/illustrations/${getPic}`;
+  };
 })();

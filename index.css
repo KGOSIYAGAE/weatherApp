@@ -172,11 +172,45 @@ input::placeholder {
 }
 
 #loading {
-  margin-top: 200px;
+  margin-top: 50px;
   visibility: hidden;
 }
 
 #loading.display {
   margin-top: 200px;
   visibility: visible;
+}
+
+.discover-weather {
+  width: 250px;
+  height: 410px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.discover-icon {
+  width: 180px;
+  height: 150px;
+}
+
+.discover-title {
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.discover-text {
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.discover-btn {
+  width: 250px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: rgb(30, 110, 190);
+  border: 0px rgb(30, 110, 190) solid;
+  color: white;
+  margin-top: 20px;
 }
