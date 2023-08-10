@@ -213,4 +213,5 @@ input::placeholder {
   border: 0px rgb(30, 110, 190) solid;
   color: white;
   margin-top: 20px;
+  cursor: pointer;
 }

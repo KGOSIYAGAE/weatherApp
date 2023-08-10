@@ -18,7 +18,12 @@ const APPController = (() => {
             `Please type the correct city name, or the city is unavailable`
           );
         } else {
-          _getWeatherDetails(geoData, APIKey);
+          const newGeoData = {
+            lat: geoData[0].lat,
+            lon: geoData[0].lon,
+          };
+
+          _getWeatherDetails(newGeoData, APIKey);
         }
       } else {
         alert(`Server Error: ${geoResponse.status}, ${geoResponse.statusText}`);
@@ -27,13 +32,13 @@ const APPController = (() => {
   }
 
   async function _getWeatherDetails(geoData, APIKey) {
-    const { lat, lon } = geoData[0];
+    const { lat, lon } = geoData;
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=metric`;
 
     const weatherResponse = await fetch(weatherURL);
     const weatherData = await weatherResponse.json();
 
-    console.log(weatherData);
+    //console.log(weatherData);
     _computeData(weatherData);
   }
 
@@ -105,7 +110,11 @@ const APPController = (() => {
     let allWeatherDeatils = document.getElementById("allWeatherDeatils");
     _hideLoader();
 
-    let AppUI = `<img src="./src/svg/weatherIcons/${cleanWeatherData.imageUrl}.svg" class="weather-icon"/>
+    let AppUI = `
+   
+                
+    
+    <img src="./src/svg/weatherIcons/${cleanWeatherData.imageUrl}.svg" class="weather-icon"/>
     <span class="city-name">${cleanWeatherData.name}, ${cleanWeatherData.country}</span>
     <span class="weather-description">${cleanWeatherData.description}</span>
     <span class="current-time">Today ${cleanWeatherData.time}</span>
@@ -136,10 +145,13 @@ const APPController = (() => {
 </div>`;
 
     allWeatherDeatils.innerHTML = AppUI;
+
+    //Show search input and button
+    let search = document.getElementById("search");
+    search.style.visibility = "visible";
   }
 
   //Loader
-
   const loader = document.getElementById("loading");
 
   function _showLoader() {
@@ -150,6 +162,7 @@ const APPController = (() => {
     loader.style.visibility = "hidden";
   }
 
+  //Set first screen image
   window.onload = function _discoverRandonPic() {
     const pictures = [
       "weather-news.webp",
@@ -160,8 +173,38 @@ const APPController = (() => {
     ];
 
     const getPic = pictures[Math.floor(Math.random() * pictures.length)];
-    console.log(getPic);
-
+    //console.log(getPic);
     document.getElementById("picFrame").src = `./src/illustrations/${getPic}`;
+
+    //Hide search input and button
+    let search = document.getElementById("search");
+    search.style.visibility = "hidden";
   };
+
+  //Get started code, get weather at your current location
+  const getStartedBtn = document.getElementById("getStartedBtn");
+
+  getStartedBtn.addEventListener("click", () => {
+    const APIKey = "b0be1ea726e41211c99a0669d5723128";
+
+    if (navigator.geolocation) {
+      _showLoader();
+
+      const userLocation =
+        navigator.geolocation.getCurrentPosition(ShowPosition);
+
+      function ShowPosition(position) {
+        const userPosition = {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        };
+
+        _getWeatherDetails(userPosition, APIKey);
+      }
+    } else {
+      alert(
+        `Sorry we could not get your location automatically, or the city is unavailable`
+      );
+    }
+  });
 })();
