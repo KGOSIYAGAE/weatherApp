@@ -116,19 +116,19 @@ const APPController = (() => {
 
 <div class="w-details">
     <div class="w-more-details">
-        <img src="./src/svg/mainIcons/wi-humidity.svg" class="details-icon"/>
+        <img src="./src/svg/weatherIcons/humidity.svg" class="details-icon"/>
         <span class="d-text">Humidity</span>
         <span class="h-text">${cleanWeatherData.humidity}&#37</span>
     </div>
 
     <div class="w-more-details">
-        <img src="./src/svg/mainIcons/wi-windy.svg" class="details-icon"/>
+        <img src="./src/svg/weatherIcons/wind.svg" class="details-icon"/>
         <span class="d-text">Wind</span>
         <span class="w-text">${cleanWeatherData.windSpeed} Km/h</span>
     </div>
 
     <div class="w-more-details">
-        <img src="./src/svg/mainIcons/wi-visibility.svg" class="details-icon"/>
+        <img src="./src/svg/weatherIcons/fog.svg" class="details-icon"/>
         <span class="d-text">Visibilty</span>
         <span class="v-text">${cleanWeatherData.visibility}</span>
     </div>
@@ -142,12 +142,12 @@ const APPController = (() => {
 
   const loader = document.getElementById("loading");
 
-  async function _showLoader() {
+  function _showLoader() {
     loader.style.visibility = "visible";
 
-    setTimeout(() => {
+    /*setTimeout(() => {
       loader.style.visibility = "hidden";
-    }, 5000);
+    }, 5000);*/
   }
 
   function _hideLoader() {
