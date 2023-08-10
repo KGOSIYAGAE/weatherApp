@@ -3,8 +3,10 @@
   <head>
     <title>Weather App</title>
     <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" 
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
 
   <body onload="">
@@ -13,8 +15,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         <div class="text-container">
           <h2 class="app-name">Weather App</h2>
           <span class="app-description">
-            It is a simple and easy to use weather searching application with
-            will help make your life easier
+            It is a simple and easy to use weather searching application to help make your life easier
           </span>
         </div>
       </div>
@@ -25,32 +26,46 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           <div class="app">
             <div class="app-box">
               <div class="top-nav">
-                
                 <div class="search" id="search">
-                    <input class="inputSearch" type="text" placeholder="City name" id="searchInput" />
-                    <img class="btnSearch" id="searchBtn" src="./src/searchIcon.png">
+                  <input
+                    class="inputSearch"
+                    type="text"
+                    placeholder="City name"
+                    id="searchInput"
+                  />
+                  <img
+                    class="btnSearch"
+                    id="searchBtn"
+                    src="./src/searchIcon.png"
+                  />
                 </div>
-                
+              </div>
+              <div class="weather-details" id="allWeatherDeatils">
+                <div id="loading">
+                  <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                 </div>
-                <div class="weather-details" id="allWeatherDeatils">
-                
-                  <div id="loading">
-                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                  </div>
 
                 <div class="discover-weather">
-                  <img class="discover-icon" id="picFrame"/>
-                  <h4 class="discover-title">Discover the Weather in Your City</h4>
-                  <span class="discover-text">Get to know your weather and radar precipitation forecast</span>
-                  <button type="button" class="discover-btn" id="getStartedBtn">Get Started</button>
-                </div>
-  
+                  <img class="discover-icon" id="picFrame" />
+                  <h4 class="discover-title">
+                    Discover the Weather in Your City
+                  </h4>
+                  <span class="discover-text"
+                    >Get to know your weather and radar precipitation
+                    forecast</span
+                  >
+                  <button type="button" class="discover-btn" id="getStartedBtn">
+                    Get Started
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="footer">
+      <span>Copyright &#169 Kgosiyage Motabogi</span>
     </div>
   </body>
   <script src="index.js"></script>
