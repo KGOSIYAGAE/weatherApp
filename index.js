@@ -38,7 +38,7 @@ const APPController = (() => {
     const weatherResponse = await fetch(weatherURL);
     const weatherData = await weatherResponse.json();
 
-    //console.log(weatherData);
+    console.log(weatherData);
     _computeData(weatherData);
   }
 
