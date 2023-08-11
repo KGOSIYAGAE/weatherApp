@@ -6,7 +6,7 @@ const APPController = (() => {
       _showLoader();
 
       const APIKey = "b0be1ea726e41211c99a0669d5723128";
-      const geoURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
+      const geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
       const geoResponse = await fetch(geoURL);
 
