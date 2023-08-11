@@ -187,24 +187,28 @@ const APPController = (() => {
   getStartedBtn.addEventListener("click", () => {
     const APIKey = "b0be1ea726e41211c99a0669d5723128";
 
-    if (navigator.geolocation) {
-      _showLoader();
+    if (navigator.onLine) {
+      if (navigator.geolocation) {
+        _showLoader();
 
-      const userLocation =
-        navigator.geolocation.getCurrentPosition(ShowPosition);
+        const userLocation =
+          navigator.geolocation.getCurrentPosition(ShowPosition);
 
-      function ShowPosition(position) {
-        const userPosition = {
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
-        };
+        function ShowPosition(position) {
+          const userPosition = {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          };
 
-        _getWeatherDetails(userPosition, APIKey);
+          _getWeatherDetails(userPosition, APIKey);
+        }
+      } else {
+        alert(
+          `Sorry we could not get your location automatically, or the city is unavailable`
+        );
       }
     } else {
-      alert(
-        `Sorry we could not get your location automatically, or the city is unavailable`
-      );
+      alert(`Please check your internet connection`);
     }
   });
 })();
