@@ -1,11 +1,12 @@
 const APPController = (() => {
+  const APIKey = "b0be1ea726e41211c99a0669d5723128";
+
   async function _getGeolocation(cityName) {
     if (cityName.length === 0) {
       alert("Please type the in city name");
     } else {
       _showLoader();
 
-      const APIKey = "b0be1ea726e41211c99a0669d5723128";
       const geoURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKey}`;
 
       const geoResponse = await fetch(geoURL);
@@ -23,7 +24,7 @@ const APPController = (() => {
             lon: geoData[0].lon,
           };
 
-          _getWeatherDetails(newGeoData, APIKey);
+          _getWeatherDetails(newGeoData);
         }
       } else {
         alert(`Server Error: ${geoResponse.status}, ${geoResponse.statusText}`);
@@ -31,7 +32,7 @@ const APPController = (() => {
     }
   }
 
-  async function _getWeatherDetails(geoData, APIKey) {
+  async function _getWeatherDetails(geoData) {
     const { lat, lon } = geoData;
     const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}&units=metric`;
 
@@ -185,8 +186,6 @@ const APPController = (() => {
   const getStartedBtn = document.getElementById("getStartedBtn");
 
   getStartedBtn.addEventListener("click", () => {
-    const APIKey = "b0be1ea726e41211c99a0669d5723128";
-
     if (navigator.onLine) {
       if (navigator.geolocation) {
         _showLoader();
